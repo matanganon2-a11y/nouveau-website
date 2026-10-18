@@ -103,7 +103,7 @@ section{padding-block:clamp(72px,10vw,128px)}
 @media (min-width:760px){.reel figure:nth-child(even){transform:translateY(28px)}}
 
 /* ticker */
-.ticker{border-block:1.5px solid var(--ink);overflow:hidden;padding-block:18px;margin-top:clamp(40px,5vw,72px)}
+.ticker{border-bottom:1.5px solid var(--ink);overflow:hidden;padding-block:18px}
 .ticker .track{display:flex;gap:42px;width:max-content;animation:tick 32s linear infinite;font-family:var(--f-display);font-stretch:125%;font-weight:800;font-size:clamp(1.2rem,2.2vw,1.6rem);letter-spacing:-.02em;text-transform:uppercase}
 .ticker span::after{content:"✦";margin-left:42px;color:var(--cobalt)}
 @keyframes tick{to{transform:translateX(-50%)}}
@@ -296,7 +296,7 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
 .loc.hit{background:color-mix(in srgb,var(--cobalt) 9%,transparent);border-radius:20px;padding-inline:18px;transition:background .3s}
 
 /* chat */
-.chat-btn{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:56;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;background:var(--ink);color:var(--bg);font-size:1.5rem;box-shadow:0 12px 30px -8px rgba(0,0,0,.45)}
+.chat-btn{transition:opacity .25s,transform .25s;position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:56;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;background:var(--ink);color:var(--bg);font-size:1.5rem;box-shadow:0 12px 30px -8px rgba(0,0,0,.45)}
 @media (min-width:860px){.chat-btn{bottom:calc(24px + env(safe-area-inset-bottom,0px))}}
 .chat-btn .dot{position:absolute;top:4px;right:4px;width:14px;height:14px;border-radius:50%;background:var(--cobalt);border:2px solid var(--ink)}
 .chat{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(164px + env(safe-area-inset-bottom,0px));z-index:57;width:min(370px,calc(100vw - 36px));max-height:min(560px,70vh);display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:26px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);overflow:hidden}
@@ -346,6 +346,8 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
 .scard .meta{display:flex;flex-wrap:wrap;gap:8px}
 .scard .meta span{border:1.5px solid currentColor;border-radius:999px;padding:6px 14px;font-weight:600;font-size:.86rem;opacity:.8}
 .scard .btn{justify-self:start}
+.sc-more{font-weight:700;text-decoration:none;margin-left:6px;opacity:.85}.sc-more:hover{opacity:1;text-decoration:underline}
+.sc-txt>.btn{display:inline-flex}
 .sc-img{min-height:300px;position:relative}
 .sc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .s1{background:var(--blush)}.s2{background:var(--ice)}.s3{background:var(--mint)}.s4{background:var(--lilac)}.s5{background:var(--soft)}
@@ -391,10 +393,60 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
 /* reel parallax */
 .reel figure{will-change:transform}
 
+/* video hero */
+.vhero{position:relative;overflow:hidden;background:#07080C;color:#fff;min-height:clamp(560px,calc(100svh - 110px),920px);display:flex;align-items:flex-end}
+.vh-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vh-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,8,12,.25) 0%,rgba(7,8,12,.15) 35%,rgba(7,8,12,.82) 100%),linear-gradient(90deg,rgba(7,8,12,.55),rgba(7,8,12,0) 70%)}
+.vh-in{position:relative;z-index:1;padding-block:clamp(48px,8vw,96px);display:grid;gap:20px;width:100%}
+.vh-kick{font-family:var(--f-display);font-stretch:125%;font-weight:700;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.vh-h1{font-size:clamp(3.2rem,11vw,10rem);line-height:.86;letter-spacing:-.05em;color:#fff}
+.vh-h1 .ln{display:block}.vh-h1 .lt{color:#AEB8FF}
+.vh-h1 .w{display:inline-block;animation:rise .9s cubic-bezier(.2,.75,.2,1) both}
+.vh-h1 .ln:nth-child(1) .w:nth-child(2){animation-delay:.1s}.vh-h1 .ln:nth-child(2) .w{animation-delay:.22s}.vh-h1 .ln:nth-child(2) .w:nth-child(2){animation-delay:.32s}
+.vh-sub{max-width:44ch;font-size:clamp(1.05rem,1.6vw,1.25rem);opacity:.9}
+.vh-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.vh-b1{background:#2340FF;color:#fff}.vh-b2{background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.7);backdrop-filter:blur(6px)}
+.vh-proof{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:.95rem;opacity:.9}
+.vh-proof .st{color:#F5A400}.vh-proof .dot{opacity:.5}
+.vh-scroll{position:absolute;right:max(24px,env(safe-area-inset-right,0px));bottom:28px;z-index:1;width:28px;height:46px;border:2px solid rgba(255,255,255,.7);border-radius:999px;display:none}
+.vh-scroll span{position:absolute;left:50%;top:9px;width:4px;height:8px;margin-left:-2px;border-radius:4px;background:#fff;animation:scrolly 1.8s infinite}
+@keyframes scrolly{0%{transform:translateY(0);opacity:1}100%{transform:translateY(16px);opacity:0}}
+@media (min-width:860px){.vh-scroll{display:block}}
+@media (max-width:600px){.vhero{min-height:clamp(560px,calc(100svh - 120px),760px)}.vh-ctas .btn{flex:1 1 100%}}
+
+/* florida map */
+.loc-wrap{display:grid;gap:28px;align-items:start}
+@media (min-width:1000px){.loc-wrap{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:48px}.flmap{position:sticky;top:110px}
+ .loc-wrap .loc{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n a" "d p";gap:6px 20px}
+ .loc-wrap .loc>div:first-child{grid-area:n}.loc-wrap .loc address{grid-area:d}.loc-wrap .loc .ph{grid-area:p;text-align:right}.loc-wrap .loc .acts{grid-area:a;justify-content:flex-end}}
+.flmap{background:var(--soft);border-radius:var(--r);padding:clamp(12px,2.5vw,28px)}
+.flmap svg{width:100%;height:auto;display:block;overflow:visible}
+.flmap .land{fill:var(--ice);stroke:var(--cobalt);stroke-width:1.2;stroke-linejoin:round}
+.pin{cursor:pointer;outline:none}
+.pin .core{fill:var(--cobalt);stroke:var(--bg);stroke-width:3;transition:r .2s}
+.pin .halo{fill:var(--cobalt);opacity:.18;transform-box:fill-box;transform-origin:center;animation:halo 2.4s infinite}
+.pin text{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:20px;fill:var(--ink);paint-order:stroke;stroke:var(--soft);stroke-width:5px;stroke-linejoin:round}
+.pin:hover .core,.pin:focus .core,.pin.on .core{r:10}
+.pin.on .halo{opacity:.35}
+.pin.on text{fill:var(--cobalt)}
+@keyframes halo{0%{transform:scale(.6);opacity:.35}100%{transform:scale(1.6);opacity:0}}
+.maphint{margin:10px 0 0;text-align:center;font-size:.85rem;color:var(--muted)}
+@media (max-width:600px){.pin text{font-size:22px}}
+
+.chat-btn.away{opacity:0;transform:scale(.6);pointer-events:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1496789581776372');fbq('track','PageView');
+window.nvTrack=function(ev,data){try{if(window.fbq)fbq('track',ev,data||{});if(window.gtag)gtag('event',ev,data||{});}catch(e){}};
+document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';
+ if(h.indexOf('book-online')>-1||h.indexOf('acuityscheduling')>-1){nvTrack('Schedule',{content_name:(a.closest('[id]')||{}).id||'booking'});}
+ else if(h.indexOf('tel:')===0){nvTrack('Contact',{content_name:h.slice(4)});}},true);
+</script>
+
 
 <div class="ann"><div class="wrap">New here? Your first face or body treatment is <b>$79.99</b> at any location →</div></div>
 
@@ -405,26 +457,23 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
 </div></header>
 
 <main id="top">
-<section class="hero"><div class="wrap">
-  <h1 class="h1x"><span class="ln"><span class="w">Real</span> <span class="pill w"><video src="m/v-orbs.mp4" poster="m/v-orbs.jpg" autoplay muted loop playsinline aria-hidden="true"></video></span> <span class="w">results.</span></span><span class="ln blue"><span class="w">Zero</span> <span class="pill w"><video src="m/v-hydro.mp4" poster="m/v-hydro.jpg" autoplay muted loop playsinline aria-hidden="true"></video></span> <span class="w">needles.</span></span></h1>
-  <div class="hero-row">
-    <div>
-      <p class="sub">Cryo, LED, HydroFacial and body contouring at five Florida wellness centers. Sessions take under an hour, and you go straight back to your day.</p>
-      <div class="rating"><span class="st">★★★★★</span><span><b>4.7 on Google</b> · 470+ reviews</span></div>
+<section class="vhero" aria-label="Nouveau Wellness Center">
+  <video class="vh-vid" id="vh-vid" muted loop playsinline autoplay preload="auto" poster="m/hero-w.jpg" aria-hidden="true"></video>
+  <script>(function(){var v=document.getElementById('vh-vid'),p=window.matchMedia('(max-aspect-ratio: 1/1)').matches;v.poster=p?'m/hero-v.jpg':'m/hero-w.jpg';v.src=p?'m/hero-v.mp4':'m/hero-w.mp4';})();</script>
+  <div class="vh-shade"></div>
+  <div class="wrap vh-in">
+    <span class="vh-kick">Nouveau Wellness Center · 5 Florida locations</span>
+    <h1 class="vh-h1"><span class="ln"><span class="w">Real</span> <span class="w">results.</span></span><span class="ln"><span class="w lt">Zero</span> <span class="w lt">needles.</span></span></h1>
+    <p class="vh-sub">Cryo, LED, HydroFacial and body contouring at five Florida wellness centers. Sessions take under an hour, and you go straight back to your day.</p>
+    <div class="vh-ctas">
+      <button class="btn vh-b1" data-book>Book first visit · $79.99</button>
+      <a class="btn vh-b2" href="#quiz">Find my treatment</a>
     </div>
-    <div class="hero-ctas">
-      <button class="btn btn-blue" data-book>Book first visit · $79.99</button>
-      <a class="btn btn-line" href="#goals">Find my treatment</a>
-    </div>
+    <div class="vh-proof"><span class="st">★★★★★</span><span><b>4.7 on Google</b> · 470+ reviews</span><span class="dot">•</span><span>No needles · No downtime</span></div>
   </div>
-  <div class="reel">
-    <figure><video src="m/v-hydro.mp4" poster="m/v-hydro.jpg" autoplay muted loop playsinline preload="metadata" aria-label="HydroFacial treatment"></video><figcaption>HydroFacial</figcaption></figure>
-    <figure><video src="m/v-orbs.mp4" poster="m/v-orbs.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Cryo globe facial"></video><figcaption>Cryo facial</figcaption></figure>
-    <figure><video src="m/v-nano.mp4" poster="m/v-nano.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Nano infusion facial"></video><figcaption>Nano Facial</figcaption></figure>
-    <figure><video src="m/v-led.mp4" poster="m/v-led.jpg" autoplay muted loop playsinline preload="metadata" aria-label="LED light therapy"></video><figcaption>LED therapy</figcaption></figure>
-  </div>
-</div>
-<div class="ticker" aria-hidden="true"><div class="track">
+  <a class="vh-scroll" href="#goals" aria-label="Scroll to treatments"><span></span></a>
+</section>
+<section class="tickersec" aria-hidden="true" style="padding:0"><div class="ticker"><div class="track">
   <span>No needles</span><span>No downtime</span><span>No deposit</span><span>Under 60 minutes</span><span>5 Florida locations</span><span>CareCredit financing</span>
   <span>No needles</span><span>No downtime</span><span>No deposit</span><span>Under 60 minutes</span><span>5 Florida locations</span><span>CareCredit financing</span>
 </div></div>
@@ -522,12 +571,12 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
     <p class="sub">Every treatment is non-invasive. Most clients combine two or three, and your esthetician will recommend the right mix.</p>
   </div>
   <div class="stack">
-    <article class="scard s1" style="--i:0"><div class="sc-txt"><span class="kicker">Face · Most booked</span><h3>Cryo Facial + LED</h3><p>Controlled cooling, then red and blue LED light. Skin looks calmer, firmer and brighter after a single session.</p><div class="meta"><span>45 min</span><span>No downtime</span><span>All skin types</span></div><button class="btn btn-ink" data-book>Book Cryo Facial + LED</button></div><div class="sc-img"><img src="m/w-red.jpg" alt="Red light on the jawline"></div></article>
-    <article class="scard s2" style="--i:1"><div class="sc-txt"><span class="kicker">Face · Best first visit</span><h3>HydroFacial</h3><p>Cleanse, exfoliate, extract and hydrate in one pass. The easiest way to start if you have never had a professional facial.</p><div class="meta"><span>45 min</span><span>Instant glow</span><span>Gentle</span></div><button class="btn btn-ink" data-book>Book HydroFacial</button></div><div class="sc-img"><img src="m/c-hydro.jpg" alt="HydroFacial foam cleanse"></div></article>
-    <article class="scard s3" style="--i:2"><div class="sc-txt"><span class="kicker">Face · New</span><h3>Nano Facial</h3><p>Benelift nano-infusion settles serums into the surface of the skin with no needles. Four formulas for hydration, tone and firmness.</p><div class="meta"><span>60 min</span><span>Needle-free</span><span>4 formulas</span></div><button class="btn btn-ink" data-book>Book Nano Facial</button></div><div class="sc-img"><img src="m/c-nano.jpg" alt="Nano infusion pen on the cheek"></div></article>
+    <article class="scard s1" style="--i:0"><div class="sc-txt"><span class="kicker">Face · Most booked</span><h3>Cryo Facial + LED</h3><p>Controlled cooling, then red and blue LED light. Skin looks calmer, firmer and brighter after a single session.</p><div class="meta"><span>45 min</span><span>No downtime</span><span>All skin types</span></div><button class="btn btn-ink" data-book>Book Cryo Facial + LED</button> <a class="sc-more" href="/cryo-facial">Learn more →</a></div><div class="sc-img"><img src="m/w-red.jpg" alt="Red light on the jawline"></div></article>
+    <article class="scard s2" style="--i:1"><div class="sc-txt"><span class="kicker">Face · Best first visit</span><h3>HydroFacial</h3><p>Cleanse, exfoliate, extract and hydrate in one pass. The easiest way to start if you have never had a professional facial.</p><div class="meta"><span>45 min</span><span>Instant glow</span><span>Gentle</span></div><button class="btn btn-ink" data-book>Book HydroFacial</button> <a class="sc-more" href="/hydrafacial">Learn more →</a></div><div class="sc-img"><img src="m/c-hydro.jpg" alt="HydroFacial foam cleanse"></div></article>
+    <article class="scard s3" style="--i:2"><div class="sc-txt"><span class="kicker">Face · New</span><h3>Nano Facial</h3><p>Benelift nano-infusion settles serums into the surface of the skin with no needles. Four formulas for hydration, tone and firmness.</p><div class="meta"><span>60 min</span><span>Needle-free</span><span>4 formulas</span></div><button class="btn btn-ink" data-book>Book Nano Facial</button> <a class="sc-more" href="/nano-facial">Learn more →</a></div><div class="sc-img"><img src="m/c-nano.jpg" alt="Nano infusion pen on the cheek"></div></article>
     <article class="scard s4" style="--i:3"><div class="sc-txt"><span class="kicker">Face & neck</span><h3>Cryo Face & Neck Lift</h3><p>Targeted cooling along the jaw, chin and neck for a more lifted, defined look. Pairs with our double-chin protocol.</p><div class="meta"><span>30–45 min</span><span>Jaw & neck</span><span>No injections</span></div><button class="btn btn-ink" data-book>Book Cryo Face & Neck Lift</button></div><div class="sc-img"><img src="m/g-orbs.jpg" alt="Chilled globes along the jaw"></div></article>
     <article class="scard s5" style="--i:4"><div class="sc-txt"><span class="kicker">Face · Advanced</span><h3>Advanced Facials</h3><p>Oxygen, Collagen Booster, Dermaplane and 14K Gold facials for deeper renewal and special occasions.</p><div class="meta"><span>45–75 min</span><span>Event-ready</span><span>Deep renewal</span></div><button class="btn btn-ink" data-book>Book Advanced Facials</button></div><div class="sc-img"><img src="m/c-room2.jpg" alt="Esthetician performing an advanced facial"></div></article>
-    <article class="scard s6" style="--i:5"><div class="sc-txt"><span class="kicker">Body contouring</span><h3>CryoSkin &amp; Lipo Laser</h3><p>Cooling, EMS, low-level laser and ultrasonic cavitation to tone and smooth the abdomen, arms, thighs and back. No recovery time.</p><div class="meta"><span>30–40 min</span><span>Abs · Arms · Thighs · Back</span></div><button class="btn btn-blue" data-book>Book body contouring</button></div><div class="sc-img sc-type"><b>Zero<br>needles</b></div></article>
+    <article class="scard s6" style="--i:5"><div class="sc-txt"><span class="kicker">Body contouring</span><h3>CryoSkin &amp; Lipo Laser</h3><p>Cooling, EMS, low-level laser and ultrasonic cavitation to tone and smooth the abdomen, arms, thighs and back. No recovery time.</p><div class="meta"><span>30–40 min</span><span>Abs · Arms · Thighs · Back</span></div><button class="btn btn-blue" data-book>Book body contouring</button> <a class="sc-more" href="/cryoskin">Learn more →</a></div><div class="sc-img sc-type"><b>Zero<br>needles</b></div></article>
   </div>
 </div></section>
 
@@ -568,12 +617,14 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
     <button class="btn btn-ink" id="geo" type="button">Use my location</button>
   </div>
   <p class="finder-msg" id="finder-msg" aria-live="polite"></p>
+  <div class="loc-wrap"><div class="flmap"><svg viewBox="0 0 600 578" role="img" aria-label="Map of Nouveau locations in Florida"><path class="land" d="M534.6 538.5L538.4 534.0L539.8 536.5L536.0 539.8L534.6 538.5ZM526.9 543.2L529.3 540.3L532.4 540.0L531.0 542.4L526.9 543.2ZM505.9 551.6L520.2 544.8L521.9 547.1L509.5 553.1L505.9 551.6ZM452.9 563.6L458.1 555.7L463.6 552.2L470.5 549.0L471.4 547.3L481.3 542.4L491.8 547.4L492.9 551.3L496.8 554.5L484.6 558.9L483.8 556.9L476.3 557.2L475.5 559.0L462.8 564.5L452.9 565.6L452.9 563.6ZM437.4 565.8L448.2 564.0L445.4 567.2L440.7 568.3L437.1 567.7L437.4 565.8ZM425.8 564.1L427.5 561.5L430.8 562.2L429.4 565.3L425.8 564.1ZM418.1 378.4L419.4 379.7L424.7 395.5L426.9 397.6L431.6 399.5L433.5 398.3L437.4 399.8L433.5 402.1L431.0 402.2L425.2 398.5L423.3 396.4L419.7 387.8L418.1 382.1L418.1 378.4ZM366.7 558.1L370.9 557.1L372.0 558.8L366.4 559.6ZM233.1 109.2L241.1 105.7L241.1 107.8L236.7 110.6L233.6 111.0L233.1 109.2ZM207.4 4.3L209.1 10.2L212.1 14.1L212.6 20.3L214.3 25.9L218.2 29.5L255.7 31.3L327.8 35.5L384.7 39.3L421.9 41.9L420.6 42.9L421.1 47.2L423.0 49.1L422.2 54.4L425.2 60.1L435.5 59.1L435.5 53.5L437.1 50.0L437.9 41.1L434.6 34.3L435.7 29.8L435.5 26.2L437.7 25.0L436.6 23.2L439.9 23.8L442.4 19.4L446.5 19.9L448.4 22.4L453.1 22.6L458.1 24.7L460.0 26.5L469.1 28.0L473.8 29.3L477.7 28.2L481.3 29.6L481.3 39.0L482.1 45.9L481.0 47.5L483.8 49.4L484.9 56.5L485.2 64.9L491.5 94.0L495.1 103.6L495.1 107.4L502.8 130.0L511.7 151.5L519.7 168.6L537.6 199.4L548.1 214.3L549.2 219.1L552.0 225.3L547.0 229.5L545.9 233.5L545.6 240.0L547.0 249.8L548.7 256.9L553.1 267.8L562.7 287.9L566.9 300.3L568.3 306.5L569.6 308.7L572.7 319.2L577.4 330.5L579.9 335.4L581.5 342.5L585.1 350.6L589.8 369.9L589.5 387.4L587.6 400.5L586.2 416.2L585.4 419.0L583.2 440.3L583.2 452.9L582.3 458.9L580.4 465.0L580.4 468.3L578.8 466.5L579.6 462.7L578.2 461.2L573.8 463.1L571.0 470.7L569.4 472.0L569.1 476.8L566.9 479.8L566.3 485.6L567.7 488.1L567.2 491.5L568.8 492.7L566.6 496.7L564.4 497.6L564.1 501.3L569.9 498.4L576.8 483.9L578.8 480.8L578.8 483.9L576.5 490.1L567.2 506.7L564.7 512.8L557.8 519.7L548.4 530.1L541.8 535.0L550.3 525.0L554.2 522.0L556.1 518.1L556.9 512.0L558.3 509.6L556.7 507.9L554.2 508.8L552.3 506.8L550.6 508.2L541.2 509.8L537.3 512.9L534.9 513.3L529.9 509.9L524.9 510.9L523.0 514.0L515.5 515.3L509.2 515.8L504.5 511.9L502.3 506.8L502.8 500.9L504.5 496.4L506.1 496.7L505.6 493.0L502.3 485.7L499.2 482.2L499.8 479.7L497.6 475.1L494.5 472.7L493.2 466.3L491.5 465.0L488.5 466.1L486.0 458.6L479.4 456.2L473.3 452.2L467.5 448.1L464.5 449.1L462.2 452.0L457.8 442.6L453.7 431.5L452.3 418.6L450.4 410.4L448.4 406.2L440.7 397.7L437.7 397.1L437.4 393.2L434.1 391.5L434.1 396.2L430.2 397.1L429.9 392.1L427.7 383.7L424.4 379.9L425.2 378.1L428.8 378.3L431.3 381.2L434.4 369.4L433.8 362.9L431.6 361.9L431.6 358.9L433.8 358.1L432.7 355.8L429.4 356.1L428.0 358.6L425.0 359.4L427.2 370.5L424.7 372.0L419.2 372.8L417.8 376.5L417.8 370.9L416.1 367.2L411.4 360.2L404.3 346.9L401.8 339.9L396.5 329.5L389.1 318.3L385.2 314.1L384.1 309.8L381.3 305.3L384.1 306.7L384.4 308.9L388.5 306.7L391.3 301.3L394.6 299.2L398.2 291.9L401.8 289.3L401.2 287.6L405.1 285.7L408.1 279.4L406.7 273.8L400.7 272.2L402.1 280.7L396.0 278.4L397.6 275.9L397.4 271.0L396.0 268.1L385.5 262.8L385.8 267.7L382.7 269.8L385.8 272.5L390.2 273.0L393.2 281.2L390.5 284.3L390.5 289.0L389.4 291.0L383.6 291.4L382.7 293.8L384.7 296.7L382.2 298.9L381.1 295.9L381.6 289.7L377.8 283.4L375.3 281.4L373.1 277.1L374.7 263.5L373.3 258.6L372.2 246.3L374.7 246.2L374.7 253.2L375.8 259.8L378.3 260.4L377.2 248.9L379.7 246.2L380.0 243.1L382.2 239.8L382.2 237.0L384.1 233.2L384.1 230.3L386.6 226.8L386.9 220.0L388.2 213.8L386.6 208.9L387.1 204.7L383.6 202.5L384.7 199.4L382.2 191.3L385.5 186.5L379.7 178.3L380.5 175.9L378.3 171.8L375.5 171.6L376.9 169.1L376.7 165.5L374.7 164.5L361.7 162.8L359.3 166.6L357.3 166.9L354.8 159.4L355.7 156.1L351.8 153.7L348.5 153.0L347.9 148.3L346.0 144.0L343.0 140.6L338.8 140.2L337.4 136.9L330.8 133.3L330.8 125.0L329.7 120.0L326.4 119.5L323.6 116.6L320.1 115.4L316.5 110.8L316.5 107.7L314.0 105.1L312.6 101.2L308.7 98.0L301.0 93.3L290.0 87.9L282.8 82.3L279.7 82.5L272.6 85.0L264.0 82.8L263.7 85.4L256.5 90.6L259.0 98.0L258.2 100.0L255.4 100.6L251.3 99.5L249.9 97.5L243.3 99.2L234.7 104.6L216.8 114.5L215.1 114.3L217.1 111.0L214.3 110.1L212.4 113.0L208.2 116.1L198.3 116.0L201.9 119.7L202.4 122.5L206.9 124.2L215.1 120.2L223.1 117.2L230.6 111.0L224.8 118.1L217.1 121.3L207.4 126.2L204.1 127.2L201.3 124.8L196.9 123.1L190.6 119.3L185.3 118.8L180.6 120.9L177.0 113.9L175.7 105.0L177.9 101.8L177.9 109.7L179.5 116.5L181.5 118.1L184.2 115.2L184.5 108.0L179.8 100.1L174.8 95.6L170.1 94.7L166.0 91.7L161.6 86.4L154.1 82.9L148.0 77.7L136.7 70.6L123.7 64.9L107.7 59.7L99.2 58.2L82.1 56.9L72.9 57.2L60.0 59.1L42.0 62.8L33.2 63.9L31.3 63.1L13.9 67.0L18.0 65.0L16.1 63.2L18.6 62.1L20.8 56.0L25.7 53.4L20.2 49.5L19.4 45.4L23.5 37.8L22.7 32.7L12.8 26.7L11.9 23.6L5.6 17.7L5.0 16.0L8.6 7.4L7.8 4.6L53.6 4.4L90.9 4.9L138.9 4.9L169.3 4.7L188.9 4.3L207.4 4.3Z"/><g class="pin" data-k="pc" tabindex="0" role="button" aria-label="Port Charlotte"><circle class="halo" cx="430.4" cy="353.9" r="16"/><circle class="core" cx="430.4" cy="353.9" r="7"/><text x="416.4" y="357.9" text-anchor="end">Port Charlotte</text></g><g class="pin" data-k="es" tabindex="0" role="button" aria-label="Estero"><circle class="halo" cx="454.6" cy="400.9" r="16"/><circle class="core" cx="454.6" cy="400.9" r="7"/><text x="468.6" y="400.9" text-anchor="start">Estero</text></g><g class="pin" data-k="na" tabindex="0" role="button" aria-label="Naples"><circle class="halo" cx="455.4" cy="417.4" r="16"/><circle class="core" cx="455.4" cy="417.4" r="7"/><text x="469.4" y="427.4" text-anchor="start">Naples</text></g><g class="pin" data-k="psl" tabindex="0" role="button" aria-label="Port St. Lucie"><circle class="halo" cx="569.2" cy="328.7" r="16"/><circle class="core" cx="569.2" cy="328.7" r="7"/><text x="555.2" y="332.7" text-anchor="end">Port St. Lucie</text></g><g class="pin" data-k="oc" tabindex="0" role="button" aria-label="Ocala"><circle class="halo" cx="417.7" cy="172.2" r="16"/><circle class="core" cx="417.7" cy="172.2" r="7"/><text x="431.7" y="176.2" text-anchor="start">Ocala</text></g></svg><p class="maphint">Tap a pin to see that location</p></div>
   <div class="locs">
     <div class="loc"><div><span class="tag">Flagship</span><h3>Port Charlotte</h3></div><address>3221 S Tamiami Trail<br>Port Charlotte, FL 33952</address><div class="ph">(941) 726-3055<small>★ 4.6 · 205 reviews</small></div><div class="acts"><a class="btn btn-blue" href="https://medspa-crm-production.up.railway.app/book-online.html" target="_blank" rel="noopener">Book</a><a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=3221+S+Tamiami+Trail+Port+Charlotte+FL+33952" target="_blank" rel="noopener">Map</a></div></div>
     <div class="loc"><div><span class="tag">Top rated</span><h3>Estero</h3></div><address>9250 Corkscrew Rd #6<br>Estero, FL 33928</address><div class="ph">(239) 788-2860<small>★ 4.7 · 209 reviews</small></div><div class="acts"><a class="btn btn-blue" href="https://medspa-crm-production.up.railway.app/book-online.html?b=estero" target="_blank" rel="noopener">Book</a><a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=9250+Corkscrew+Rd+6+Estero+FL+33928" target="_blank" rel="noopener">Map</a></div></div>
     <div class="loc"><div><span class="tag">Newest</span><h3>Naples</h3></div><address>9010 Strada Stell Ct<br>Naples, FL 34109</address><div class="ph">Book online<small>Confirmation call included</small></div><div class="acts"><a class="btn btn-blue" href="https://app.acuityscheduling.com/schedule/f17d1379/appointment/95467240/calendar/14296929" target="_blank" rel="noopener">Book</a><a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=9010+Strada+Stell+Ct+Naples+FL+34109" target="_blank" rel="noopener">Map</a></div></div>
     <div class="loc"><div><span class="tag">Treasure Coast</span><h3>Port St. Lucie</h3></div><address>1810 SE Port Saint Lucie Blvd<br>Port St. Lucie, FL 34952</address><div class="ph">(772) 280-5572<small>★ 4.8 · 37 reviews</small></div><div class="acts"><a class="btn btn-blue" href="tel:+17722805572">Call</a><a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=1810+SE+Port+Saint+Lucie+Blvd+Port+St+Lucie+FL+34952" target="_blank" rel="noopener">Map</a></div></div>
     <div class="loc"><div><span class="tag">Central Florida</span><h3>Ocala</h3></div><address>11740 SW 97th Terrace<br>Ocala, FL 34481</address><div class="ph">(352) 414-0717<small>★ 4.8 · 21 reviews</small></div><div class="acts"><a class="btn btn-blue" href="tel:+13524140717">Call</a><a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=11740+SW+97th+Terrace+Ocala+FL+34481" target="_blank" rel="noopener">Map</a></div></div>
+  </div>
   </div>
   <div class="hours">Sunday–Friday <span>10 AM – 6 PM</span> Saturday <span>Closed</span></div>
 </div></section>
@@ -620,7 +671,7 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
 <footer><div class="wrap">
   <a class="logo" href="#top"><b>nouveau</b><span>wellness center</span></a>
   <div class="fgrid">
-    <div><h4>Treatments</h4><ul><li><a href="#treatments">Cryo Facial + LED</a></li><li><a href="#treatments">HydroFacial</a></li><li><a href="#treatments">Nano Facial</a></li><li><a href="#treatments">CryoSkin Body</a></li></ul></div>
+    <div><h4>Treatments</h4><ul><li><a href="/cryo-facial">Cryo Facial + LED</a></li><li><a href="/hydrafacial">HydroFacial</a></li><li><a href="/nano-facial">Nano Facial</a></li><li><a href="/cryoskin">CryoSkin Body</a></li><li><a href="/lipo-laser">Lipo Laser + Cavitation</a></li></ul></div>
     <div><h4>Locations</h4><ul><li><a href="#locations">Port Charlotte</a></li><li><a href="#locations">Estero</a></li><li><a href="#locations">Naples</a></li><li><a href="#locations">Port St. Lucie</a></li><li><a href="#locations">Ocala</a></li></ul></div>
     <div><h4>Hours</h4><ul><li>Sun–Fri · 10 AM–6 PM</li><li>Saturday · Closed</li></ul></div>
     <div><h4>Contact</h4><ul><li>Nouveauspa29@gmail.com</li><li>Corporate office: Port Charlotte, FL (next to our Port Charlotte center)</li></ul></div>
@@ -644,7 +695,7 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
   </div>
 </dialog>
 
-<button class="chat-btn" id="chat-btn" aria-label="Ask a question" aria-expanded="false">💬<span class="dot"></span></button>
+<button class="chat-btn away" id="chat-btn" aria-label="Ask a question" aria-expanded="false">💬<span class="dot"></span></button>
 <div class="chat" id="chat" hidden role="dialog" aria-label="Questions">
   <div class="chat-h"><div><b>Nouveau Concierge</b><small>Quick answers, any time</small></div><button class="x" id="chat-x" aria-label="Close chat">✕</button></div>
   <div class="chat-log" id="chat-log"></div>
@@ -703,7 +754,7 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
 
   /* ---------- booking dialog ---------- */
   var d=document.getElementById('book');
-  function openBook(){if(d.open)return;if(d.showModal)d.showModal();else location.hash='locations';}
+  function openBook(){if(d.open)return;if(window.nvTrack)nvTrack('ViewContent',{content_name:'location_picker'});if(d.showModal)d.showModal();else location.hash='locations';}
   document.querySelectorAll('[data-book]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();openBook();});});
   document.addEventListener('click',function(e){var b=e.target.closest('[data-book-dyn]');if(b){e.preventDefault();openBook();}});
 
@@ -712,10 +763,12 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
   function highlight(k,how){
     rows.forEach(function(r){r.classList.remove('hit');});
     var r=document.getElementById('loc-'+k);if(!r)return;
-    r.classList.add('hit');
+    r.classList.add('hit');document.querySelectorAll('.pin').forEach(function(g){g.classList.toggle('on',g.dataset.k===k);});
     msg.innerHTML='Your closest center is <span class="blue">'+LOC[k].name+'</span>'+(how||'')+'.';
     r.scrollIntoView({behavior:'smooth',block:'center'});
   }
+  document.querySelectorAll('.pin').forEach(function(g){function go(){highlight(g.dataset.k);}g.addEventListener('click',go);g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
+  rows.forEach(function(r){r.addEventListener('mouseenter',function(){var k=r.id.replace('loc-','');document.querySelectorAll('.pin').forEach(function(g){g.classList.toggle('on',g.dataset.k===k);});});});
   document.getElementById('area').addEventListener('change',function(e){if(e.target.value)highlight(e.target.value);});
   document.getElementById('geo').addEventListener('click',function(){
     if(!navigator.geolocation){msg.textContent='Location is not available in this browser. Pick your city instead.';return;}
@@ -779,6 +832,7 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
   function toggleChat(show){cp.hidden=!show;cb.setAttribute('aria-expanded',show);var dot=cb.querySelector('.dot');if(dot)dot.remove();
     if(show&&!started){started=true;add('Hi! I can answer quick questions about treatments, pricing and locations.','bot');drawChips();}}
   cb.addEventListener('click',function(){toggleChat(cp.hidden);});
+  function chatVis(){cb.classList.toggle('away',window.scrollY<window.innerHeight*0.6&&cp.hidden);}window.addEventListener('scroll',chatVis,{passive:true});chatVis();
   document.getElementById('chat-x').addEventListener('click',function(){toggleChat(false);});
 
   /* ---------- exit offer (desktop, once per session) ---------- */
