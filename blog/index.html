@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blog | Nouveau Wellness Center</title><meta name="description" content="Skincare and wellness tips from Nouveau Wellness Center."><link rel="canonical" href="https://nouveauwellnesscenter.com/blog">
+<meta name="theme-color" content="#2340FF"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232340FF'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='38' text-anchor='middle' fill='white'%3En%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"><style>
+:root{--bg:#fff;--ink:#0B0B10;--muted:#5D6070;--line:#E6E7EE;--soft:#F5F6FA;--cobalt:#2340FF;--on-cobalt:#fff;--blush:#FFE4DA;--ice:#E6ECFF;--mint:#D9F3E6;--lilac:#ECE4FF;
+--f-display:"Archivo","Arial Black","Helvetica Neue",Arial,sans-serif;--f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#09090E;--ink:#F3F4F8;--muted:#A3A6B8;--line:#22242F;--soft:#12131B;--cobalt:#7D8BFF;--on-cobalt:#09090E;--blush:#2C1C18;--ice:#141A33;--mint:#11281D;--lilac:#1D1833;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-stretch:112%;font-weight:800;letter-spacing:-.035em;line-height:.98;margin:0;text-wrap:balance}
+.blue{color:var(--cobalt)}
+.ann{background:var(--cobalt);color:var(--on-cobalt);font-weight:600;font-size:.88rem;text-align:center;padding:10px 16px}
+.nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(14px)}
+.nav .wrap{display:flex;align-items:center;gap:24px;padding-block:16px}
+.logo{text-decoration:none;display:flex;align-items:baseline;gap:8px;margin-right:auto}
+.logo b{font-family:var(--f-display);font-stretch:125%;font-weight:900;font-size:1.5rem;letter-spacing:-.04em}
+.logo span{font-size:.72rem;font-weight:600;color:var(--muted)}
+.nav nav{display:none;gap:24px;font-weight:600;font-size:.95rem}.nav nav a{text-decoration:none}
+@media (min-width:900px){.nav nav{display:flex}}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:0;cursor:pointer;font:700 1rem/1 var(--f-body);padding:1.05em 1.6em;border-radius:999px;text-decoration:none;white-space:nowrap}
+.btn-blue{background:var(--cobalt);color:var(--on-cobalt)}.btn-line{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.hero{padding-block:clamp(48px,7vw,96px) 32px}
+.kicker{font-family:var(--f-display);font-stretch:125%;font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt)}
+.hero h1{font-size:clamp(2.8rem,8vw,6rem);margin-top:14px}
+.hero p{color:var(--muted);font-size:1.15rem;max-width:56ch;margin:18px 0 0}
+.prose{max-width:720px;padding-bottom:96px}
+.prose h2{font-size:1.6rem;margin:40px 0 10px}
+.prose p{color:var(--muted);margin:0 0 12px}
+.meta{font-size:.9rem;color:var(--muted)}
+.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));padding-bottom:64px}
+.card{border-radius:28px;padding:30px;display:grid;gap:12px;align-content:start}
+.card .amt{font-family:var(--f-display);font-stretch:125%;font-weight:900;font-size:4rem;line-height:.85;letter-spacing:-.05em}
+.card p{color:var(--muted);margin:0}
+.c1{background:var(--blush)}.c2{background:var(--ice)}.c3{background:var(--mint)}.c4{background:var(--lilac)}
+.steps{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));padding-bottom:64px}
+.step{background:var(--soft);border-radius:24px;padding:26px}
+.step b{font-family:var(--f-display);font-stretch:125%;font-weight:900;font-size:3rem;color:var(--cobalt);line-height:.9;display:block;margin-bottom:10px}
+.step h3{font-size:1.4rem;margin-bottom:8px}.step p{color:var(--muted);margin:0}
+.posts{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));padding-bottom:64px}
+.post{border:1.5px solid var(--line);border-radius:28px;padding:30px;display:grid;gap:12px;align-content:start}
+.post h2{font-size:1.7rem}.post p{color:var(--muted);margin:0}
+.cta{background:var(--cobalt);color:var(--on-cobalt);border-radius:36px;padding:clamp(28px,5vw,56px);display:grid;gap:18px;justify-items:start;margin-bottom:96px}
+.cta .loclist span{background:color-mix(in srgb,var(--on-cobalt) 18%,transparent)}
+.cta h2{font-size:clamp(2rem,5vw,3.6rem)}.cta .btn{background:var(--on-cobalt);color:var(--cobalt)}
+.loclist{display:flex;flex-wrap:wrap;gap:8px}
+.loclist span{background:var(--soft);border-radius:999px;padding:8px 14px;font-weight:600;font-size:.9rem}
+footer{background:var(--ink);color:var(--bg);padding-block:48px 32px;font-size:.92rem}
+footer .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center}
+footer a{text-decoration:none;opacity:.85}footer a:hover{opacity:1;text-decoration:underline}
+footer .logo b{font-size:1.8rem}footer .logo span{color:inherit;opacity:.6}
+footer .small{opacity:.6;font-size:.82rem;margin-top:24px}
+</style></head>
+<body>
+<div class="ann">New here? Your first face or body treatment is <b>$79.99</b> at any location</div>
+<header class="nav"><div class="wrap"><a class="logo" href="/"><b>nouveau</b><span>wellness center</span></a>
+<nav><a href="/#goals">Treatments</a><a href="/#results">Results</a><a href="/#locations">Locations</a><a href="/giftcards">Gift cards</a><a href="/blog">Blog</a></nav>
+<a class="btn btn-blue" href="/#locations">Book now</a></div></header>
+<main><section class="hero wrap"><span class="kicker">Skincare &amp; wellness</span><h1>The Nouveau <span class="blue">journal.</span></h1><p>Tips, treatment guides and wellness advice from our team.</p></section><section class="wrap posts"><article class="post"><span class="kicker">Skincare 101</span><h2>5 signs your skin needs a HydroFacial</h2><p>Dryness, dullness and clogged pores are common, so how do you know it's time for a professional HydroFacial instead of more moisturizer? Watch for flakiness that stays even after hydrating, a dull or uneven tone, rough texture, recurring breakouts around the nose and chin, and makeup that won't sit smoothly. A HydroFacial cleanses, exfoliates and hydrates in one session, which is why it's one of our most requested treatments before events and at the change of seasons.</p></article><article class="post"><span class="kicker">Body contouring</span><h2>CryoSkin vs. Lipo Laser: which is right for you?</h2><p>Both are non-surgical ways to work on stubborn areas, and they work differently. CryoSkin uses controlled cooling over a series of sessions, a gentle option for toning areas like the abdomen or thighs. Lipo Laser with ultrasonic cavitation combines low-level laser and ultrasound for contouring. The right choice depends on your goals, the area and your timeline, and our team will help you decide at your first visit.</p></article><article class="post"><span class="kicker">Skincare 101</span><h2>Why 14K Gold Facials are more than a trend</h2><p>Gold facials are known for luxury, but the appeal goes beyond the glow. Gold-infused serums are paired with massage techniques that support circulation and help reduce the look of puffiness. Combined with antioxidant-rich serums, skin looks brighter and more radiant right after a single session, which makes it a favorite before special occasions.</p></article><article class="post"><span class="kicker">Treatment guide</span><h2>How LED light therapy fits a long-term routine</h2><p>Different LED wavelengths are used for different goals. Red light is used for a smoother, more even-looking complexion, while blue light is used in routines for breakout-prone skin. Paired with cryo in our signature face and neck lift, LED works best as part of a regular maintenance routine rather than a one-time fix.</p></article><article class="post"><span class="kicker">Wellness</span><h2>Building a self-care routine that actually sticks</h2><p>The biggest barrier to a consistent routine is overcomplication. Start with one anchor habit, like a monthly facial, and build from there. Pair professional treatments with simple daily habits such as SPF, sleep and hydration. Our team can help you plan a realistic treatment rhythm for your goals and budget at your first visit.</p></article></section><section class="wrap"><div class="cta"><h2>Ready to put it into practice?</h2><p style="margin:0;opacity:.85">Your first face or body treatment is $79.99 at any location.</p><a class="btn" href="/#locations">Book now</a></div></section></main>
+<footer><div class="wrap"><div class="row"><a class="logo" href="/"><b>nouveau</b><span>wellness center</span></a>
+<div style="display:flex;gap:18px;flex-wrap:wrap"><a href="/#locations">Locations</a><a href="/giftcards">Gift cards</a><a href="/blog">Blog</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div></div>
+<div class="small">© 2026 Nouveau Wellness Center · Sunday–Friday 10 AM–6 PM · Saturday closed · Nouveauspa29@gmail.com</div></div></footer>
+</body></html>
