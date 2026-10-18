@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nouveauwellnesscenter.com/sitemap.xml
