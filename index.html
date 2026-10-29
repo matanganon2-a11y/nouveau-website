@@ -429,6 +429,90 @@ dialog::backdrop{background:rgba(9,9,14,.6);backdrop-filter:blur(4px)}
 @media (max-width:600px){.pin text{font-size:22px}}
 
 .chat-btn.away{opacity:0;transform:scale(.6);pointer-events:none}
+
+/* ===== v5: WebGL hero canvas ===== */
+.vh-gl{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;mix-blend-mode:screen;opacity:.9}
+.vh-shade{z-index:0}.vh-in{z-index:2}
+/* ===== scroll story ===== */
+.story{background:#07080C;color:#fff;padding-block:0}
+.story-in{display:grid;gap:0}
+@media (min-width:960px){.story-in{grid-template-columns:1fr 1fr}}
+.story-media{position:sticky;top:0;height:100svh;display:none;align-items:center;justify-content:center;overflow:hidden}
+@media (min-width:960px){.story-media{display:flex}}
+.story-media .frame{position:relative;width:min(84%,520px);aspect-ratio:4/5;border-radius:36px;overflow:hidden;box-shadow:0 40px 120px -30px rgba(35,64,255,.55)}
+.story-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s ease,transform 1.2s ease}
+.story-media img.on{opacity:1;transform:none}
+.story-media .glow{position:absolute;inset:-30%;background:radial-gradient(closest-side,rgba(35,64,255,.35),transparent 70%);filter:blur(30px);transition:background .8s}
+.story-steps{padding-block:12vh}
+.sstep{min-height:80svh;display:flex;flex-direction:column;justify-content:center;gap:16px;padding-inline:max(20px,env(safe-area-inset-left,0px)) max(20px,env(safe-area-inset-right,0px));opacity:.35;transition:opacity .5s}
+.sstep.on{opacity:1}
+.sstep .n{font-family:var(--f-display);font-stretch:125%;font-weight:900;font-size:.8rem;letter-spacing:.2em;color:#9AA6FF}
+.sstep h3{font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:.9;letter-spacing:-.045em}
+.sstep p{max-width:42ch;font-size:1.12rem;opacity:.78}
+.sstep .mimg{display:block;width:100%;max-width:520px;aspect-ratio:4/3;object-fit:cover;border-radius:24px;margin-top:8px}
+@media (min-width:960px){.sstep .mimg{display:none}}
+.story-head{padding:clamp(72px,10vw,120px) max(20px,env(safe-area-inset-left,0px)) 0;text-align:center}
+.story-head h2{font-size:clamp(2.6rem,7vw,6rem);line-height:.88;letter-spacing:-.05em}
+.story-head p{opacity:.7;margin-top:14px}
+.sbar{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,#2340FF,#9AA6FF);z-index:70;transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+/* ===== micro-interactions ===== */
+.mag{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.tilt{transition:transform .35s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d;will-change:transform}
+.goal .img img,.scard .sc-img img{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.goal:hover .img img{transform:scale(1.06)}
+.btn{position:relative;overflow:hidden}
+.btn .rip{position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,.45);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+/* ===== booking wizard ===== */
+.bw{display:grid;gap:16px}
+.bw-steps{display:flex;gap:6px}
+.bw-steps i{flex:1;height:4px;border-radius:4px;background:var(--line)}
+.bw-steps i.on{background:var(--cobalt)}
+.bw-days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+.bw-day{flex:none;scroll-snap-align:start;width:68px;padding:10px 0;border-radius:16px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);text-align:center;cursor:pointer;font:600 .8rem var(--f-body)}
+.bw-day b{display:block;font-family:var(--f-display);font-stretch:112%;font-size:1.5rem;line-height:1.1}
+.bw-day[disabled]{opacity:.35;cursor:not-allowed}
+.bw-day.sel{border-color:var(--cobalt);background:var(--cobalt);color:var(--on-cobalt)}
+.bw-times{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.bw-time{padding:12px 0;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:700 .95rem var(--f-body);cursor:pointer}
+.bw-time:hover,.bw-time.sel{border-color:var(--cobalt);color:var(--cobalt)}
+.bw-form{display:grid;gap:10px}
+.bw-row{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.bw-form input[type=text],.bw-form input[type=tel],.bw-form input[type=email]{width:100%;font:500 1rem var(--f-body);padding:14px 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--soft);color:var(--ink)}
+.bw-form input:focus{outline:none;border-color:var(--cobalt)}
+.bw-form label.ck{display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:var(--muted)}.bw-form label.ck input{width:18px;height:18px;flex:0 0 18px;padding:0;margin-top:2px;accent-color:#2340FF}
+.bw-sum{background:var(--soft);border-radius:16px;padding:14px 16px;font-size:.95rem}
+.bw-sum b{color:var(--ink)}
+.bw-err{color:#D13B3B;font-weight:600;font-size:.92rem;min-height:1.2em}
+.bw-ok{text-align:center;display:grid;gap:12px;justify-items:center;padding-block:10px}
+.bw-ok .tick{width:72px;height:72px;border-radius:50%;background:var(--cobalt);color:var(--on-cobalt);display:grid;place-items:center;font-size:2rem;animation:pop .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+.bw-back{all:unset;cursor:pointer;color:var(--muted);font-size:.9rem;text-decoration:underline}
+.bw-load{display:flex;gap:6px;justify-content:center;padding:20px}
+.bw-load i{width:8px;height:8px;border-radius:50%;background:var(--cobalt);animation:blink 1s infinite}
+.bw-load i:nth-child(2){animation-delay:.15s}.bw-load i:nth-child(3){animation-delay:.3s}
+@keyframes blink{50%{opacity:.2}}
+.pick .soon{font-size:.72rem;font-weight:700;color:var(--cobalt);text-transform:uppercase;letter-spacing:.06em}
+/* ===== AI chat input ===== */
+.chat-form{display:flex;gap:8px;padding:10px 12px 12px;border-top:1px solid var(--line)}
+.chat-form input{flex:1;min-width:0;font:500 .95rem var(--f-body);padding:11px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--soft);color:var(--ink)}
+.chat-form button{border:0;border-radius:999px;padding:0 16px;background:var(--cobalt);color:var(--on-cobalt);font:700 .9rem var(--f-body);cursor:pointer}
+.msg.typing{display:flex;gap:4px}.msg.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:blink 1s infinite}.msg.typing i:nth-child(2){animation-delay:.15s}.msg.typing i:nth-child(3){animation-delay:.3s}
+.chat-note{font-size:.72rem;color:var(--muted);text-align:center;padding:0 12px 10px}
+/* ===== callback ===== */
+.cb-card{border-radius:clamp(28px,4vw,44px);padding:clamp(28px,5vw,56px);background:var(--ink);color:var(--bg);display:grid;gap:24px;align-items:center}
+@media (min-width:900px){.cb-card{grid-template-columns:1fr 1.1fr;gap:48px}}
+.cb-card h2{font-size:clamp(2.2rem,5vw,4rem)}
+.cb-card p{opacity:.72;max-width:40ch}
+.cb-form{display:grid;gap:10px}
+.cb-form .bw-row{grid-template-columns:1fr 1fr}
+.cb-form input,.cb-form select{width:100%;font:500 1rem var(--f-body);padding:15px 16px;border-radius:14px;border:1.5px solid color-mix(in srgb,var(--bg) 20%,transparent);background:color-mix(in srgb,var(--bg) 8%,transparent);color:var(--bg)}
+.cb-form select option{color:#0B0B10}
+.cb-form input::placeholder{color:color-mix(in srgb,var(--bg) 55%,transparent)}
+.cb-form .btn{background:var(--cobalt);color:#fff;justify-self:start}
+.cb-msg{font-weight:600;min-height:1.3em}
+.cb-form label.ck{display:flex;gap:10px;font-size:.82rem;opacity:.7;align-items:flex-start}.cb-form label.ck input{width:18px;height:18px;flex:0 0 18px;padding:0;margin-top:2px;accent-color:#2340FF}
+@media (max-width:520px){.bw-row,.cb-form .bw-row{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 <link rel="manifest" href="/manifest.webmanifest">
@@ -450,6 +534,7 @@ document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)
 </script>
 
 
+<div class="sbar" id="sbar" aria-hidden="true"></div>
 <div class="ann"><div class="wrap">New here? Your first face or body treatment is <b>$79.99</b> at any location →</div></div>
 
 <header class="nav"><div class="wrap">
@@ -463,6 +548,7 @@ document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)
   <video class="vh-vid" id="vh-vid" muted loop playsinline autoplay preload="auto" poster="/m/hero-w.webp" aria-hidden="true"></video>
   <script>(function(){var v=document.getElementById('vh-vid'),p=window.matchMedia('(max-aspect-ratio: 1/1)').matches;v.poster=p?'/m/hero-v.webp':'/m/hero-w.webp';v.src=p?'/m/hero-v.mp4':'/m/hero-w.mp4';})();</script>
   <div class="vh-shade"></div>
+  <canvas class="vh-gl" id="vh-gl" aria-hidden="true"></canvas>
   <div class="wrap vh-in">
     <span class="vh-kick">Nouveau Wellness Center · 5 Florida locations</span>
     <h1 class="vh-h1"><span class="ln"><span class="w">Real</span> <span class="w">results.</span></span><span class="ln"><span class="w lt">Zero</span> <span class="w lt">needles.</span></span></h1>
@@ -582,6 +668,23 @@ document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)
   </div>
 </div></section>
 
+<section class="story" id="story" aria-label="How a Cryo Facial + LED works">
+  <div class="story-head"><span class="kicker" style="color:#9AA6FF">Inside the treatment</span><h2>45 minutes.<br><span style="color:#AEB8FF">Four steps.</span></h2><p>Scroll through a Cryo Facial + LED, our most booked treatment.</p></div>
+  <div class="story-in">
+    <div class="story-media"><div class="glow" id="st-glow"></div><div class="frame">
+      <img src="/m/c-hydro.webp" alt="" class="on" data-i="0" decoding="async">
+      <img src="/m/g-orbs.webp" alt="" data-i="1" decoding="async" loading="lazy">
+      <img src="/m/w-red.webp" alt="" data-i="2" decoding="async" loading="lazy">
+      <img src="/m/g-glow.webp" alt="" data-i="3" decoding="async" loading="lazy">
+    </div></div>
+    <div class="story-steps">
+      <div class="sstep on" data-i="0" data-c="rgba(35,64,255,.35)"><span class="n">STEP 01 · 5 MIN</span><h3>Cleanse &amp; read your skin.</h3><p>Your esthetician cleanses and looks closely at your skin, so the session is set for what it actually needs today.</p><img class="mimg" src="/m/c-hydro.webp" alt="" loading="lazy" decoding="async"></div>
+      <div class="sstep" data-i="1" data-c="rgba(120,200,255,.35)"><span class="n">STEP 02 · 15 MIN</span><h3>Controlled cold.</h3><p>A temperature-controlled applicator glides across the face, jaw and neck. Skin looks calmer and firmer as it cools.</p><img class="mimg" src="/m/g-orbs.webp" alt="" loading="lazy" decoding="async"></div>
+      <div class="sstep" data-i="2" data-c="rgba(255,60,60,.32)"><span class="n">STEP 03 · 20 MIN</span><h3>Red &amp; blue light.</h3><p>LED light finishes the session: red for a smoother, more even look, blue for breakout-prone skin.</p><img class="mimg" src="/m/w-red.webp" alt="" loading="lazy" decoding="async"></div>
+      <div class="sstep" data-i="3" data-c="rgba(255,190,150,.35)"><span class="n">STEP 04 · 5 MIN</span><h3>Back to your day.</h3><p>No needles, no recovery. You leave with a written plan and a fresh, rested look.</p><img class="mimg" src="/m/g-glow.webp" alt="" loading="lazy" decoding="async"><p style="margin-top:8px"><button class="btn vh-b1" data-book>Book my first visit · $79.99</button></p></div>
+    </div>
+  </div>
+</section>
 <section class="tech" aria-label="The technology">
   <video src="/m/v-wide.mp4" poster="/m/v-wide.webp" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
   <div class="tech-in wrap">
@@ -651,6 +754,17 @@ document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)
   <div class="tile t-b"><span class="kicker">Glow Club</span><h2>Make great skin a habit.</h2><p>A monthly membership with treatments every month, member pricing on products and priority booking. Ask about it at your first visit.</p><button class="btn btn-ink" data-book>Start with a visit</button></div>
 </div></section>
 
+<section id="callback" style="padding-top:0"><div class="wrap"><div class="cb-card">
+  <div><span class="kicker" style="color:#9AA6FF">Prefer to talk first?</span><h2 style="margin-top:12px">We'll call you<br>in minutes.</h2><p>Leave your name and number. Someone from your nearest center calls you back during opening hours to answer questions and find a time.</p></div>
+  <form class="cb-form" id="cb-form" novalidate>
+    <div class="bw-row"><input id="cb-name" type="text" autocomplete="given-name" placeholder="First name" required><input id="cb-phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Mobile number" required></div>
+    <select id="cb-loc" aria-label="Location"><option value="pc">Port Charlotte</option><option value="estero">Estero</option><option value="psl">Port St. Lucie</option><option value="oc">Ocala</option><option value="na">Naples</option></select>
+    <input id="cb-web" type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+    <label class="ck"><input type="checkbox" id="cb-ok" checked> I agree to be contacted by phone or text about my request.</label>
+    <button class="btn" type="submit">Call me back</button>
+    <div class="cb-msg" id="cb-msg" aria-live="polite"></div>
+  </form>
+</div></div></section>
 <section id="journal" style="padding-top:0"><div class="wrap"><div class="head split"><h2 class="h2">From the <span class="blue">journal.</span></h2><p class="sub">Plain-language guides to help you choose. <a href="/blog" style="font-weight:700">See all articles →</a></p></div><div class="jgrid"><a class="jr" href="/blog/hydrafacial-vs-nano-facial"><b>HydroFacial vs. Nano Facial: which one should you book?</b><span>Read →</span></a><a class="jr" href="/blog/first-visit-guide"><b>Your first visit to Nouveau: exactly what happens</b><span>Read →</span></a><a class="jr" href="/blog/cryoskin-vs-lipo-laser"><b>CryoSkin vs. Lipo Laser: how to choose a body treatment</b><span>Read →</span></a></div></div></section>
 <style>.jgrid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}.jr{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:180px;padding:26px;border-radius:var(--r);background:var(--soft);text-decoration:none;transition:transform .2s,background .2s}.jr:hover{transform:translateY(-3px);background:var(--ice)}.jr b{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:1.45rem;line-height:1.1;letter-spacing:-.02em}.jr span{font-weight:700;color:var(--cobalt)}</style>
 <section id="faq" style="padding-top:0"><div class="wrap faq">
@@ -701,9 +815,11 @@ document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)
 
 <button class="chat-btn away" id="chat-btn" aria-label="Ask a question" aria-expanded="false">💬<span class="dot"></span></button>
 <div class="chat" id="chat" hidden role="dialog" aria-label="Questions">
-  <div class="chat-h"><div><b>Nouveau Concierge</b><small>Quick answers, any time</small></div><button class="x" id="chat-x" aria-label="Close chat">✕</button></div>
+  <div class="chat-h"><div><b>Nouveau Concierge</b><small>AI assistant · answers instantly</small></div><button class="x" id="chat-x" aria-label="Close chat">✕</button></div>
   <div class="chat-log" id="chat-log"></div>
   <div class="chips-q" id="chat-chips"></div>
+  <form class="chat-form" id="chat-form"><input id="chat-in" type="text" placeholder="Ask anything…" autocomplete="off" aria-label="Your question"><button type="submit">Send</button></form>
+  <div class="chat-note">AI assistant · not medical advice</div>
 </div>
 
 <dialog id="exit" aria-labelledby="ex-t">
@@ -864,6 +980,155 @@ document.addEventListener('click',function(e){var a=e.target.closest('a');if(!a)
   d.addEventListener('click',function(e){if(e.target===d)d.close();});
   document.querySelectorAll('.ba input').forEach(function(r){var b=r.closest('.ba');r.addEventListener('input',function(){b.style.setProperty('--pos',r.value+'%');});});
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('video').forEach(function(v){v.removeAttribute('autoplay');v.pause();});}
+})();
+</script>
+<script>
+(function(){
+var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var API='https://medspa-crm-production.up.railway.app/api/public/booking';
+var BOOKPAGE='https://medspa-crm-production.up.railway.app/book-online.html';
+function q(path,opts,b){var u=API+path+(b?(path.indexOf('?')>-1?'&':'?')+'b='+b:'');return fetch(u,Object.assign({headers:{'Content-Type':'application/json'}},opts||{})).then(function(r){return r.json().catch(function(){return {}}).then(function(d){if(!r.ok)throw new Error(d.error||'Something went wrong. Please call us.');return d;});});}
+function track(e,d){try{window.nvTrack&&nvTrack(e,d||{})}catch(x){}}
+
+/* ---------- WebGL ice hero ---------- */
+(function(){
+  var c=document.getElementById('vh-gl');if(!c||RM)return;
+  var gl=c.getContext('webgl',{premultipliedAlpha:false,antialias:false,alpha:true});if(!gl)return;
+  var N=innerWidth<700?70:150;
+  var vs='attribute vec3 p;uniform float t;uniform vec2 m;uniform vec2 r;varying float a;void main(){vec2 q=p.xy;q.y=mod(q.y+t*(0.015+p.z*0.03),2.2)-1.1;q.x+=sin(t*0.4+p.z*20.0)*0.03;vec2 d=q-m;float k=exp(-dot(d,d)*18.0);q+=normalize(d+0.0001)*k*0.08;gl_Position=vec4(q,0.0,1.0);gl_PointSize=(2.0+p.z*7.0)*(r.y/900.0)*(1.0+k*1.5);a=0.25+p.z*0.6+k*0.4;}';
+  var fs='precision mediump float;varying float a;void main(){vec2 c=gl_PointCoord-0.5;float d=length(c);float s=smoothstep(0.5,0.0,d);float x=max(0.0,1.0-abs(c.x)*9.0)*max(0.0,1.0-abs(c.y)*2.2)+max(0.0,1.0-abs(c.y)*9.0)*max(0.0,1.0-abs(c.x)*2.2);vec3 col=mix(vec3(0.62,0.72,1.0),vec3(1.0),s);gl_FragColor=vec4(col,(s*0.8+x*0.35)*a);}';
+  function sh(t,src){var o=gl.createShader(t);gl.shaderSource(o,src);gl.compileShader(o);return o;}
+  var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return;gl.useProgram(pr);
+  var d=new Float32Array(N*3);for(var i=0;i<N;i++){d[i*3]=Math.random()*2-1;d[i*3+1]=Math.random()*2.2-1.1;d[i*3+2]=Math.random();}
+  var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,d,gl.STATIC_DRAW);
+  var lp=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(lp);gl.vertexAttribPointer(lp,3,gl.FLOAT,false,0,0);
+  var ut=gl.getUniformLocation(pr,'t'),um=gl.getUniformLocation(pr,'m'),ur=gl.getUniformLocation(pr,'r');
+  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
+  var mx=5,my=5,tx=5,ty=5,vis=true,t0=performance.now();
+  function rs(){var dpr=Math.min(devicePixelRatio||1,2);c.width=c.clientWidth*dpr;c.height=c.clientHeight*dpr;gl.viewport(0,0,c.width,c.height);gl.uniform2f(ur,c.width,c.height);}
+  rs();addEventListener('resize',rs);
+  var hero=c.parentElement;
+  function pt(e){var r=hero.getBoundingClientRect();var p=e.touches?e.touches[0]:e;tx=((p.clientX-r.left)/r.width)*2-1;ty=-(((p.clientY-r.top)/r.height)*2-1);}
+  hero.addEventListener('pointermove',pt,{passive:true});hero.addEventListener('touchmove',pt,{passive:true});hero.addEventListener('pointerleave',function(){tx=5;ty=5;});
+  new IntersectionObserver(function(es){vis=es[0].isIntersecting;if(vis)requestAnimationFrame(f);}).observe(hero);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&vis)requestAnimationFrame(f);});
+  function f(now){if(!vis||document.hidden)return;mx+=(tx-mx)*.08;my+=(ty-my)*.08;gl.uniform1f(ut,(now-t0)/1000);gl.uniform2f(um,mx,my);gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.POINTS,0,N);requestAnimationFrame(f);}
+  requestAnimationFrame(f);
+})();
+
+/* ---------- scroll story + progress bar ---------- */
+(function(){
+  var steps=[].slice.call(document.querySelectorAll('.sstep')),imgs=[].slice.call(document.querySelectorAll('.story-media img')),glow=document.getElementById('st-glow');
+  if(steps.length){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var i=e.target.dataset.i;steps.forEach(function(s){s.classList.toggle('on',s===e.target);});imgs.forEach(function(m){m.classList.toggle('on',m.dataset.i===i);});if(glow)glow.style.background='radial-gradient(closest-side,'+e.target.dataset.c+',transparent 70%)';}});},{rootMargin:'-45% 0px -45% 0px'});steps.forEach(function(s){io.observe(s);});}
+  var bar=document.getElementById('sbar'),tk=false;
+  addEventListener('scroll',function(){if(tk)return;tk=true;requestAnimationFrame(function(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);bar.style.transform='scaleX('+Math.min(1,p)+')';tk=false;});},{passive:true});
+})();
+
+/* ---------- micro-interactions ---------- */
+(function(){
+  var fine=matchMedia('(pointer:fine)').matches;
+  document.addEventListener('pointerdown',function(e){var b=e.target.closest('.btn');if(!b||RM)return;var r=b.getBoundingClientRect(),s=Math.max(r.width,r.height);var o=document.createElement('span');o.className='rip';o.style.cssText='width:'+s+'px;height:'+s+'px;left:'+(e.clientX-r.left-s/2)+'px;top:'+(e.clientY-r.top-s/2)+'px';b.appendChild(o);setTimeout(function(){o.remove();},650);});
+  if(!fine||RM)return;
+  document.querySelectorAll('.vh-ctas .btn,.offer .btn,.final .btn').forEach(function(b){b.classList.add('mag');b.addEventListener('pointermove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.18)+'px,'+((e.clientY-r.top-r.height/2)*.28)+'px)';});b.addEventListener('pointerleave',function(){b.style.transform='';});});
+  document.querySelectorAll('.goal,.jr,.step').forEach(function(c){c.classList.add('tilt');c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(900px) rotateY('+(x*6)+'deg) rotateX('+(-y*6)+'deg) translateY(-4px)';});c.addEventListener('pointerleave',function(){c.style.transform='';});});
+  var big=document.querySelector('.bigscore');if(big&&'IntersectionObserver' in window){var done=false;new IntersectionObserver(function(es){if(es[0].isIntersecting&&!done){done=true;var t0=performance.now();var node=big.firstChild;(function a(n){var k=Math.min(1,(n-t0)/1100),v=(4.7*(1-Math.pow(1-k,3))).toFixed(1);node.nodeValue=v;if(k<1)requestAnimationFrame(a);})(t0);}},{threshold:.6}).observe(big);}
+})();
+
+/* ---------- in-site booking (Port Charlotte & Estero, new clients) ---------- */
+(function(){
+  var dlg=document.getElementById('book');if(!dlg)return;var box=dlg.querySelector('.dlg');var home=box.innerHTML;
+  var LOC={pc:{name:'Port Charlotte',b:'',addr:'3221 S Tamiami Trail'},estero:{name:'Estero',b:'estero',addr:'9250 Corkscrew Rd #6'}};
+  var st={};
+  function stepsBar(n){return '<div class="bw-steps">'+[1,2,3].map(function(i){return '<i'+(i<=n?' class="on"':'')+'></i>';}).join('')+'</div>';}
+  function head(t,sub){return '<div class="dlg-h"><div><span class="kicker blue">'+sub+'</span><h2 id="bk-t">'+t+'</h2></div><button class="x" type="button" data-x aria-label="Close">✕</button></div>';}
+  function loading(){box.innerHTML=head('One moment…',st.loc.name)+'<div class="bw-load"><i></i><i></i><i></i></div>';}
+  function fallback(){window.open(BOOKPAGE+(st.loc.b?'?b='+st.loc.b:''),'_blank','noopener');reset();dlg.close();}
+  function reset(){box.innerHTML=home;st={};}
+  dlg.addEventListener('close',function(){setTimeout(reset,250);});
+  box.addEventListener('click',function(e){
+    if(e.target.closest('[data-x]')){dlg.close();return;}
+    var a=e.target.closest('a[href*="book-online.html"]');
+    if(a&&!st.loc){e.preventDefault();var k=a.href.indexOf('b=estero')>-1?'estero':'pc';start(k);return;}
+    var bk=e.target.closest('[data-back]');if(bk){var w=bk.dataset.back;if(w==='home')reset();else if(w==='days')showDays();else if(w==='times')showTimes(st.day);return;}
+  });
+  function start(k){
+    st={loc:LOC[k]};track('ViewContent',{content_name:'booking_'+k});loading();
+    q('/config',null,st.loc.b).then(function(cfg){
+      var svc=(cfg.services||[]).filter(function(s){return s.audience==='new'&&!s.hidden&&Number(s.price)>0;}).sort(function(a,b){return Math.abs(a.price-79.99)-Math.abs(b.price-79.99);})[0];
+      if(!cfg.live||!svc){fallback();return;}
+      st.svc=svc;st.maxDays=Math.min(21,cfg.maxDaysAhead||21);showDays();
+    }).catch(fallback);
+  }
+  function showDays(){
+    loading();
+    q('/days?service='+encodeURIComponent(st.svc.key)+'&days='+st.maxDays,null,st.loc.b).then(function(days){
+      var seen={};days=(days||[]).filter(function(d){if(seen[d.day])return false;seen[d.day]=1;return true;});
+      var html=head('Pick a day',st.loc.name+' · $'+Number(st.svc.price).toFixed(2)+' first visit')+'<div class="bw">'+stepsBar(1)+'<div class="bw-sum"><b>'+st.svc.name+'</b> · '+st.svc.duration+' min</div><div class="bw-days">';
+      days.forEach(function(d){var dt=new Date(d.day+'T12:00:00');html+='<button type="button" class="bw-day" data-day="'+d.day+'"'+(d.open?'':' disabled')+'>'+dt.toLocaleDateString('en-US',{weekday:'short'})+'<b>'+dt.getDate()+'</b>'+dt.toLocaleDateString('en-US',{month:'short'})+'</button>';});
+      html+='</div><div id="bw-t"></div><button class="bw-back" type="button" data-back="home">← Choose another location</button></div>';
+      box.innerHTML=html;
+      var first=box.querySelector('.bw-day:not([disabled])');
+      box.querySelectorAll('.bw-day').forEach(function(b){b.addEventListener('click',function(){box.querySelectorAll('.bw-day').forEach(function(x){x.classList.remove('sel');});b.classList.add('sel');loadTimes(b.dataset.day);});});
+      if(first){first.classList.add('sel');loadTimes(first.dataset.day);}else{document.getElementById('bw-t').innerHTML='<p class="bw-err">No open times online right now. Please call us.</p>';}
+    }).catch(fallback);
+  }
+  function loadTimes(day){
+    st.day=day;var t=document.getElementById('bw-t');t.innerHTML='<div class="bw-load"><i></i><i></i><i></i></div>';
+    q('/slots?service='+encodeURIComponent(st.svc.key)+'&date='+day,null,st.loc.b).then(function(sl){
+      if(!sl||!sl.length){t.innerHTML='<p class="bw-err">That day just filled up. Try another day.</p>';return;}
+      t.innerHTML='<div class="bw-times">'+sl.map(function(x,i){return '<button type="button" class="bw-time" data-i="'+i+'">'+x.label+'</button>';}).join('')+'</div>';
+      t.querySelectorAll('.bw-time').forEach(function(b){b.addEventListener('click',function(){st.slot=sl[+b.dataset.i];showForm();});});
+    }).catch(function(){t.innerHTML='<p class="bw-err">Could not load times. Please try again or call us.</p>';});
+  }
+  function showTimes(){showDays();}
+  function when(){var d=new Date(st.slot.start);return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',timeZone:'America/New_York'})+' at '+st.slot.label;}
+  function showForm(){
+    track('InitiateCheckout',{content_name:st.svc.name,value:Number(st.svc.price),currency:'USD'});
+    box.innerHTML=head('Your details',st.loc.name)+'<div class="bw">'+stepsBar(2)+'<div class="bw-sum"><b>'+when()+'</b><br>'+st.svc.name+' · $'+Number(st.svc.price).toFixed(2)+'</div>'+
+      '<form class="bw-form" id="bw-f" novalidate><div class="bw-row"><input type="text" name="firstName" autocomplete="given-name" placeholder="First name" required><input type="text" name="lastName" autocomplete="family-name" placeholder="Last name" required></div>'+
+      '<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="Mobile number" required><input type="email" name="email" autocomplete="email" placeholder="Email" required>'+
+      '<input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">'+
+      '<label class="ck"><input type="checkbox" name="sms" checked> Text me my confirmation and reminders. Msg &amp; data rates may apply. Reply STOP to opt out.</label>'+
+      '<div class="bw-err" id="bw-e" aria-live="polite"></div><button class="btn btn-blue" type="submit">Confirm my visit</button></form>'+
+      '<button class="bw-back" type="button" data-back="days">← Change time</button><p class="note" style="margin:0">Already a client? <a href="'+BOOKPAGE+(st.loc.b?'?b='+st.loc.b:'')+'" target="_blank" rel="noopener">Book your next visit here</a>.</p></div>';
+    var f=document.getElementById('bw-f');
+    f.addEventListener('submit',function(e){e.preventDefault();var err=document.getElementById('bw-e');err.textContent='';var btn=f.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Booking…';
+      q('/book',{method:'POST',body:JSON.stringify({serviceKey:st.svc.key,start:st.slot.start,firstName:f.firstName.value,lastName:f.lastName.value,phone:f.phone.value,email:f.email.value,website:f.website.value,smsConsent:f.sms.checked,emailConsent:true,lang:'en',attribution:{channel:'website',source:'nouveauwellnesscenter.com',page:location.pathname}})},st.loc.b)
+      .then(function(r){track('Schedule',{content_name:st.svc.name,value:Number(st.svc.price),currency:'USD',location:st.loc.name});try{window.gtag&&gtag('event','booking_complete',{location:st.loc.name});}catch(x){}
+        box.innerHTML=head('You’re booked!',st.loc.name)+'<div class="bw-ok">'+stepsBar(3)+'<div class="tick">✓</div><h3 style="font-size:1.6rem">See you, '+(r.firstName||'')+'!</h3><p style="color:var(--muted);margin:0">'+(r.when||when())+'<br>'+st.loc.name+' · '+st.loc.addr+'</p><p style="color:var(--muted);margin:0;font-size:.9rem">A confirmation is on its way by text and email. Our team may call to say hi.</p><button class="btn btn-ink" type="button" data-x>Done</button></div>';})
+      .catch(function(x){err.textContent=x.message;btn.disabled=false;btn.textContent='Confirm my visit';});});
+  }
+})();
+
+/* ---------- AI concierge (CRM receptionist) ---------- */
+(function(){
+  var form=document.getElementById('chat-form'),inp=document.getElementById('chat-in'),log=document.getElementById('chat-log');if(!form)return;
+  var hist=[],busy=false;
+  function add(t,who){var m=document.createElement('div');m.className='msg '+who;m.textContent=t;log.appendChild(m);log.scrollTop=log.scrollHeight;return m;}
+  function send(text){if(busy||!text.trim())return;busy=true;add(text,'me');hist.push({role:'user',content:text});
+    var ty=document.createElement('div');ty.className='msg bot typing';ty.innerHTML='<i></i><i></i><i></i>';log.appendChild(ty);log.scrollTop=log.scrollHeight;
+    q('/chat',{method:'POST',body:JSON.stringify({messages:hist.slice(-12),lang:/^es/i.test(navigator.language)?'es':'en',attribution:{channel:'website',source:'nouveauwellnesscenter.com'}})})
+    .then(function(r){ty.remove();var rep=r.reply||'Would you like us to call you?';hist.push({role:'assistant',content:rep});add(rep,'bot');if(r.leadSaved)track('Lead',{content_name:'chat'});if(r.serviceKey){var b=document.createElement('button');b.type='button';b.className='btn btn-blue';b.style.cssText='justify-self:start;padding:.7em 1.1em;font-size:.88rem';b.textContent='Pick a time';b.onclick=function(){var o=document.getElementById('chat-x');o&&o.click();var bk=document.querySelector('[data-book]');bk&&bk.click();};log.appendChild(b);}})
+    .catch(function(){ty.remove();add('I can’t reach our assistant right now. Tap a question below, or call Port Charlotte at (941) 726-3055.','bot');})
+    .finally(function(){busy=false;});}
+  form.addEventListener('submit',function(e){e.preventDefault();var t=inp.value;inp.value='';send(t);});
+  window.nvAsk=send;
+})();
+
+/* ---------- callback form -> CRM lead ---------- */
+(function(){
+  var f=document.getElementById('cb-form');if(!f)return;var msg=document.getElementById('cb-msg');
+  var PH={pc:'(941) 726-3055',estero:'(239) 788-2860',psl:'(772) 280-5572',oc:'(352) 414-0717',na:''};
+  f.addEventListener('submit',function(e){e.preventDefault();var n=document.getElementById('cb-name').value.trim(),p=document.getElementById('cb-phone').value.replace(/\D/g,'').slice(-10),loc=document.getElementById('cb-loc'),ok=document.getElementById('cb-ok').checked;
+    if(document.getElementById('cb-web').value)return;
+    if(!n){msg.textContent='Please enter your first name.';return;} if(p.length!==10){msg.textContent='Please enter a 10-digit mobile number.';return;} if(!ok){msg.textContent='Please tick the box so we can contact you.';return;}
+    var btn=f.querySelector('button');btn.disabled=true;btn.textContent='Sending…';msg.textContent='';
+    var ln=loc.options[loc.selectedIndex].text, b=loc.value==='estero'?'estero':'';
+    q('/chat',{method:'POST',body:JSON.stringify({messages:[{role:'user',content:'Please call me back. My name is '+n+' and my mobile number is '+p+'. I am interested in the '+ln+' location. I found you on your website and agreed to be contacted by phone or text.'}],lang:'en',attribution:{channel:'website',source:'callback-form'}})},b)
+    .then(function(r){track('Lead',{content_name:'callback',location:ln});msg.textContent='Thank you, '+n+'! We’ll call you shortly during opening hours.';f.reset();})
+    .catch(function(){msg.innerHTML='We couldn’t send that just now. Please call '+ln+(PH[loc.value]?' at <b>'+PH[loc.value]+'</b>':'')+'.';})
+    .finally(function(){btn.disabled=false;btn.textContent='Call me back';});});
+})();
 })();
 </script>
 
